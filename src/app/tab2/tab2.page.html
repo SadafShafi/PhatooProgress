@@ -6,12 +6,25 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col
+        size="6"
+        *ngFor="let photo of photoService.photoss; index as position"
+      >
+      <!-- here is the path {{ photo.webviewPath }} -->
+        <ion-img [src]="photo.webviewPath" (click)="go(photo.filepath)"></ion-img>
+        <!-- path {{ photo.webviewPath }} -->
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 
-  <app-explore-container name="Tab 2 page"></app-explore-container>
+  <!-- ion-fab markup  -->
+  <ion-fab vertical="bottom" horizontal="center" slot="fixed">
+    <ion-fab-button (click)="addPhotoToGallery()">
+      <ion-icon name="camera"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+<!-- </ion-content> -->
 </ion-content>

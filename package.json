@@ -20,12 +20,28 @@
     "@angular/platform-browser-dynamic": "~12.0.1",
     "@angular/router": "~12.0.1",
     "@capacitor/app": "1.0.0",
+    "@capacitor/camera": "^1.0.0",
     "@capacitor/core": "3.0.0",
+    "@capacitor/filesystem": "^1.0.0",
     "@capacitor/haptics": "1.0.0",
     "@capacitor/keyboard": "1.0.0",
     "@capacitor/status-bar": "1.0.0",
+    "@capacitor/storage": "^1.0.0",
+    "@ionic-native/camera": "^5.33.1",
+    "@ionic-native/file-opener": "^5.33.1",
+    "@ionic-native/http": "^5.33.1",
+    "@ionic-native/ocr": "^5.33.1",
     "@ionic/angular": "^5.5.2",
+    "@ionic/pwa-elements": "^3.0.2",
+    "@ngx-progressbar/core": "^5.3.2",
+    "cordova-plugin-advanced-http": "^3.1.0",
+    "cordova-plugin-camera": "^5.0.2",
+    "cordova-plugin-file-opener2": "^3.0.5",
+    "cordova-plugin-mobile-ocr": "^3.1.2",
+    "natives": "^1.1.6",
+    "ocr-space-api-wrapper": "^1.0.5",
     "rxjs": "~6.6.0",
+    "tesseract.js": "^2.1.4",
     "tslib": "^2.0.0",
     "zone.js": "~0.11.4"
   },
@@ -41,9 +57,11 @@
     "@angular/language-service": "~12.0.1",
     "@capacitor/cli": "3.0.0",
     "@ionic/angular-toolkit": "^4.0.0",
+    "@ionic/app-scripts": "^3.2.4",
     "@types/jasmine": "~3.6.0",
     "@types/jasminewd2": "~2.0.3",
-    "@types/node": "^12.11.1",
+    "@types/node": "^12.20.14",
+    "@types/tesseract.js": "^2.0.0",
     "@typescript-eslint/eslint-plugin": "4.16.1",
     "@typescript-eslint/parser": "4.16.1",
     "eslint": "^7.6.0",
@@ -62,5 +80,10 @@
     "ts-node": "~8.3.0",
     "typescript": "~4.2.4"
   },
-  "description": "An Ionic project"
+  "description": "An Ionic project",
+  "cordova": {
+    "plugins": {
+      "cordova-plugin-camera": {}
+    }
+  }
 }

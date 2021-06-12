@@ -13,5 +13,16 @@
     </ion-toolbar>
   </ion-header>
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+  <ion-col size="12" *ngFor="let photo of x; index as position">
+    <div >
+      <ion-img [src]="photo.webviewPath"></ion-img>
+
+      here is the data:
+      temping
+      <!-- {{ fun(photo) }} -->
+    </div>
+    <!-- {{ breasssk }} -->
+  </ion-col>
+
+  <!-- <app-explore-container name="Tab 1 page"></app-explore-container> -->
 </ion-content>

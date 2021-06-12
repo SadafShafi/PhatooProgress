@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { PhotoService } from '../services/photo.service';
+import { Router } from '@angular/router';  
+
 
 @Component({
   selector: 'app-tab2',
@@ -7,6 +10,18 @@ import { Component } from '@angular/core';
 })
 export class Tab2Page {
 
-  constructor() {}
+  constructor(public photoService: PhotoService,public router:Router) { }
+  async ngOnInit() {
+    await this.photoService.loadSaved();
+  }
+
+  addPhotoToGallery() {
+    this.photoService.addNewToGallery();
+  }
+
+  go(path) {   
+    // console.log(['viewer/\"'+String(path)+"\""])
+    this.router.navigate(['viewer/'+String(path)]);  
+  } 
 
 }
