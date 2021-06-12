@@ -28,6 +28,7 @@
     "@capacitor/status-bar": "1.0.0",
     "@capacitor/storage": "^1.0.0",
     "@ionic-native/camera": "^5.33.1",
+    "@ionic-native/core": "^5.33.1",
     "@ionic-native/file-opener": "^5.33.1",
     "@ionic-native/http": "^5.33.1",
     "@ionic-native/ocr": "^5.33.1",
