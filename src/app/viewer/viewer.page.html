@@ -27,6 +27,13 @@
   <ion-button (click)="decodeImage()">
     Decode
   </ion-button>
+  <ion-button (click)="showResults()">
+    Show
+  </ion-button>
 
+
+  <ion-label *ngIf="storedResult">
+    {{storedResult}}
+  </ion-label>
 
 </ion-content>

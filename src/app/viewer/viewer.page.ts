@@ -15,6 +15,9 @@ export class ViewerPage {
   path: any
   x: any
 
+  decodedResult: string;
+  storedResult: string;
+
   constructor(private route: ActivatedRoute, public photoservice: PhotoService, private router: Router,
     private http: HttpClient) { }
 
@@ -46,9 +49,15 @@ export class ViewerPage {
     imageData.append('base64Image', targetImage.webviewPath);
     this.http.post('https://api.ocr.space/parse/image', imageData, 
     { headers: new HttpHeaders(headers) }
-    ).subscribe(data => {
+    ).subscribe((data: any) => {
       console.log("doing")
       console.log('my data: ', data);
+      this.decodedResult = data.ParsedResults[0].ParsedText
+      localStorage.setItem('first',this.decodedResult);
     }, err=> console.log(err))
+  }
+
+  showResults(){
+    this.storedResult = localStorage.getItem('first'); 
   }
 }
