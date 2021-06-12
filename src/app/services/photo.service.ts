@@ -73,22 +73,22 @@ export class PhotoService {
 
   public async loadSaved() {
     // Retrieve cached photo array data
-    console.log("loading")
     const photoList = await Storage.get({ key: this.PHOTO_STORAGE });
     this.photoss = JSON.parse(photoList.value) || [];
-  
+    
     // Display the photo by reading into base64 format
-  for (let photo of this.photoss) {
+    for (let photo of this.photoss) {
     // Read each saved photo's data from the Filesystem
     const readFile = await Filesystem.readFile({
-        path: photo.filepath,
+      path: photo.filepath,
         directory: Directory.Data
-    });
-
-    // Web platform only: Load the photo as base64 data
-    photo.webviewPath = `data:image/jpeg;base64,${readFile.data}`;
-
-    // photo.webviewPath = 'data:image/jpeg;base64,${readFile.data}';
+      });
+      
+      // Web platform only: Load the photo as base64 data
+      photo.webviewPath = `data:image/jpeg;base64,${readFile.data}`;
+      
+      console.log("loading", photo.webviewPath)
+      // photo.webviewPath = 'data:image/jpeg;base64,${readFile.data}';
   }
 
   }
