@@ -1,30 +1,67 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Tab 2
+      Make New Notes
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content padding>
   <ion-grid>
-    <ion-row>
-      <ion-col
-        size="6"
-        *ngFor="let photo of photoService.photoss; index as position"
-      >
-      <!-- here is the path {{ photo.webviewPath }} -->
-        <ion-img [src]="photo.webviewPath" (click)="go(photo.filepath)"></ion-img>
-        <!-- path {{ photo.webviewPath }} -->
-      </ion-col>
-    </ion-row>
-  </ion-grid>
 
-  <!-- ion-fab markup  -->
+
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+        </ion-col>
+        <ion-col>
+          <ion-spinner *ngIf="Spinner" name="dots"></ion-spinner>
+        </ion-col>
+        <ion-col>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <!-- <ion-textarea id = "inpp"></ion-textarea>  -->
+    
+    
+      <ion-textarea *ngIf="showOnScreen"  [(ngModel)]="showOnScreen"
+        id="input" autoGrow = true></ion-textarea>
+
+     
+
+      <ion-grid>
+        <ion-row>
+          <!-- <ion-col>
+          </ion-col> -->
+          <ion-col>
+            <ion-button *ngIf="showOnScreen" (click) = "saveText()">Save</ion-button>
+          </ion-col>
+          <ion-col>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+      <!-- <ion-grid *ngIf="loadingDone">
+        here is the loaded
+        {{ texts_array[1] }}
+      </ion-grid> -->
+      
+
+
+
+
+
+
+
+  </ion-grid>
   <ion-fab vertical="bottom" horizontal="center" slot="fixed">
     <ion-fab-button (click)="addPhotoToGallery()">
       <ion-icon name="camera"></ion-icon>
     </ion-fab-button>
   </ion-fab>
-<!-- </ion-content> -->
 </ion-content>

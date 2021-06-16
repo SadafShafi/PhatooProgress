@@ -2,8 +2,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
-import { PhotoService } from '../services/photo.service';
-
+// import { PhotoService } from '../services/photo.service';
+import { Tab2Page } from '../tab2/tab2.page'
 
 
 @Component({
@@ -18,19 +18,26 @@ export class ViewerPage {
   decodedResult: string;
   storedResult: string;
 
-  constructor(private route: ActivatedRoute, public photoservice: PhotoService, private router: Router,
+  constructor(private route: ActivatedRoute, 
+    // public photoservice: PhotoService, 
+    private router: Router,
+    public taa :Tab2Page,
     private http: HttpClient) { }
 
   async ngOnInit() {
+
+    // this.taa.printer()
 
     // First get the product id from the current route.
     this.path = this.route.snapshot.paramMap.get('path');
     // console.log("here are the parameters");
     // console.log(this.path)
 
-    await this.photoservice.loadSaved();
-    this.x = this.photoservice.photoss;
-    console.log(this.photoservice.photoss)
+    await this.taa.loadSaved();
+    this.x = this.taa.photoss;
+    // console.log(this.taa.photoss)
+
+
   }
 
   back() {
@@ -45,7 +52,7 @@ export class ViewerPage {
     }
     const imageData = new FormData();
     
-    const targetImage = this.photoservice.photoss[1];
+    const targetImage = this.taa.photoss[1];
     imageData.append('base64Image', targetImage.webviewPath);
     this.http.post('https://api.ocr.space/parse/image', imageData, 
     { headers: new HttpHeaders(headers) }

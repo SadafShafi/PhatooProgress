@@ -1,28 +1,22 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Tab 1
+      My Notes
     </ion-title>
   </ion-toolbar>
 </ion-header>
+ 
+<ion-content padding >
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
-    </ion-toolbar>
-  </ion-header>
 
-  <ion-col size="12" *ngFor="let photo of x; index as position">
-    <div >
-      <ion-img [src]="photo.webviewPath"></ion-img>
+  <ion-grid>
+    <ion-row *ngFor="let x of Page2.texts_array">
 
-      here is the data:
-      temping
-      <!-- {{ fun(photo) }} -->
-    </div>
-    <!-- {{ breasssk }} -->
-  </ion-col>
+      <div style = "background-color:blue;">NOTE</div> <br><br>
+      {{ x }} <br><br>
 
-  <!-- <app-explore-container name="Tab 1 page"></app-explore-container> -->
+    </ion-row>
+  </ion-grid>
+
+  
 </ion-content>
