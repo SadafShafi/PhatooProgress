@@ -9,7 +9,7 @@
 <ion-content padding>
   <ion-grid>
 
-
+ 
     <ion-grid>
       <ion-row>
         <ion-col>
@@ -26,25 +26,37 @@
       </ion-row>
     </ion-grid>
 
+
     <!-- <ion-textarea id = "inpp"></ion-textarea>  -->
-    
-    
+    <div  *ngIf="highLightFlag == false" >
+      <!-- <p > -->
+        <h2 *ngIf="showOnScreen" style="background-color:chartreuse;">Edit ?? </h2>
+      <!-- </p> -->
       <ion-textarea *ngIf="showOnScreen"  [(ngModel)]="showOnScreen"
         id="input" autoGrow = true></ion-textarea>
+    </div>
+
+        <h2  *ngIf="highLightFlag" style="background-color:chartreuse;">Select the text you want to highlight 
+        </h2>
+          <h4 *ngIf="highLightFlag">
+            {{ showOnScreen }}
+          </h4>
+
+          <ion-button *ngIf="highLightFlag" (click)="Highlight_Done()">Save</ion-button>
+         
 
      
 
       <ion-grid>
         <ion-row>
-          <!-- <ion-col>
-          </ion-col> -->
-          <ion-col>
-            <ion-button *ngIf="showOnScreen" (click) = "saveText()">Save</ion-button>
+          <ion-col *ngIf="highLightFlag == false" >
+            <ion-button *ngIf="showOnScreen" (click) = "saveText()">Save Edits</ion-button>
           </ion-col>
           <ion-col>
           </ion-col>
         </ion-row>
       </ion-grid>
+      <!-- <ion-button (click)="cliked()">Value </ion-button> -->
 
       <!-- <ion-grid *ngIf="loadingDone">
         here is the loaded

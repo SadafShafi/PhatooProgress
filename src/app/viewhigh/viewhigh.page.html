@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar> 
+    <ion-title (click)="go()"><ion-icon name="arrow-back-circle" ></ion-icon> Go Back</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+
+<ion-card>
+  <!-- <ion-item>
+    <ion-icon name="pin" slot="start"></ion-icon>
+    <ion-label>ion-item in a card, icon left, button right</ion-label>
+    <ion-button fill="outline" slot="end">View</ion-button>
+  </ion-item> -->
+
+  <ion-card-content>
+    <ion-grid>
+      <ion-row>
+        <ion-col
+          size="12"
+          *ngFor="let x of Page2.highlights;index as position;"
+        >
+        <ion-col *ngIf="x == highlight">
+          {{ Page2.texts_array[position] }}
+        </ion-col>
+    
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card-content>
+</ion-card>
+</ion-content>

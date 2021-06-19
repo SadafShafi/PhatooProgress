@@ -10,6 +10,15 @@ const routes: Routes = [
     path: 'viewer/:path',
     loadChildren: () => import('./viewer/viewer.module').then( m => m.ViewerPageModule)
   },
+  // {
+  //   path: 'viewhigh',
+  //   loadChildren: () => import('./viewhigh/viewhigh.module').then( m => m.ViewhighPageModule)
+  // },
+  {
+    path: 'viewhigh/:high',
+    loadChildren: () => import('./viewhigh/viewhigh.module').then( m => m.ViewhighPageModule)
+  },
+
 ];
 @NgModule({
   imports: [

@@ -5,6 +5,10 @@ import { Filesystem, Directory } from '@capacitor/filesystem';
 import { Storage } from '@capacitor/storage';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
+declare var TinyQ;
+declare var  consoler:String ;
+declare var proceed:boolean;
+
 @Component({
   selector: 'app-tab2',
   templateUrl: 'tab2.page.html',
@@ -21,10 +25,37 @@ export class Tab2Page {
   no_of_notes:number;
   texts_array = [];
   loadingDone:boolean = false;
+  highLightFlag:boolean = false;
+  highlights = [];
 
-  constructor(public router:Router,private http: HttpClient) { }
+  constructor(public router:Router,private http: HttpClient) { 
+
+    TinyQ.init();
+    
+  }
+  cliked(){
+
+    if(consoler){
+      consoler = consoler.split("%22").join("")
+    consoler = consoler.split("%20").join(" ")
+    consoler = consoler.split("%0D%0A").join(" ") 
+    consoler = consoler.split("%3E").join(" ")
+    consoler = consoler.split("%0A").join(" ") 
+    consoler = consoler.split("%0D").join(" ") 
+    
+
+    console.log("consoler is hhhhhhhhhhhhhhhhhhhhh >>>>>>>> ", consoler)
+
+    }
+    else{
+      consoler = this.showOnScreen.substring(0,37);
+    }
+    
+    
+  }
   async ngOnInit() {
-    await this.loadNumberOfNotes()
+    // this.no_of_notes = 0;
+    await this.loadNumberOfNotes();
     // await console.log("number of notes from NgOnInit ",this.no_of_notes)
     // await this.loadTexts()
     // this.foo();
@@ -143,16 +174,31 @@ export class Tab2Page {
     this.router.navigate(['viewer/'+String(path)]);  
   } 
 
+  async Highlight_Done(){
+    await this.cliked()
+    await localStorage.setItem(String(this.no_of_notes)+"h",String(consoler));
+    this.highLightFlag = false;
+    this.showOnScreen = ""
+
+    this.router.navigate(['tabs/tab1']); 
+
+  }
+
   async saveText(){
 
     console.log("saved");
+    this.highLightFlag = true;
 
     this.no_of_notes += 1;
     
     await localStorage.setItem(String(this.no_of_notes),this.showOnScreen);
-    console.log("number is >> ",this.no_of_notes)
+    // await localStorage.setItem(String(this.no_of_notes)+"h",String(consoler));
+
+    // console.log("number is >> ",this.no_of_notes)
     await localStorage.setItem('number',String(this.no_of_notes));
-    this.showOnScreen = "";
+    // this.showOnScreen = "";
+     
+
     // await this.loadTexts()
 
   }
@@ -160,17 +206,35 @@ export class Tab2Page {
   async loadTexts(){
 
     
-    var i = 0;
-    for(i=0;i<=this.no_of_notes;i++){
+    var i = 1;
+    for(i=1;i<=this.no_of_notes;i++){
       this.texts_array[i] = await localStorage.getItem(String(i));
+      this.highlights[i] = await localStorage.getItem(String(i)+"h");
       // console.log("loading",this.texts_array[i]);
     }
     this.loadingDone = true;
   }
 
   async loadNumberOfNotes(){
+    console.log("before loading num  =  ",this.no_of_notes)
     
     this.no_of_notes = parseInt(await localStorage.getItem('number'));
+    console.log(localStorage.getItem('number'))
+    // console.log(this.no_of_notes <10 )
+    // console.log(this.no_of_notes >10 )
+    // console.log(this.no_of_notes == 10 )
+    if( this.no_of_notes > 10 || this.no_of_notes <10 || this.no_of_notes == 10){
+        console.log("iffer")
+        // this.no_of_notes -= 1;
+      }
+      else{
+        console.log("elser")
+        this.no_of_notes = 0;
+
+      }
+      
+
+    // }
     console.log("loading the number of notes",this.no_of_notes);
   }
 

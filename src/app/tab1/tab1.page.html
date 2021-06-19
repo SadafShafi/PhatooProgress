@@ -9,14 +9,30 @@
 <ion-content padding >
 
 
-  <ion-grid>
-    <ion-row *ngFor="let x of Page2.texts_array">
 
-      <div style = "background-color:blue;">NOTE</div> <br><br>
-      {{ x }} <br><br>
 
-    </ion-row>
-  </ion-grid>
+  
+      <ion-grid>
+    
+        <ion-row *ngFor="let y of Page2.highlights" >
+
+          <ion-card *ngIf="y">
+            <ion-card-content (click)="go(y)">
+              {{ y }} 
+            </ion-card-content>
+          </ion-card>
+
+      
+    
+        
+        </ion-row>
+      
+      </ion-grid>
+    
+
+
+
+  <ion-button (click)="destroy()">Clear All</ion-button>
 
   
 </ion-content>
