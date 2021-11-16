@@ -19,7 +19,7 @@ export class ViewhighPage implements OnInit {
       await this.Page2.loadNumberOfNotes()
       await this.Page2.loadTexts()
   
-    }
+    } 
 
   async ngOnInit() {
     this.highlight = this.route.snapshot.paramMap.get('high');

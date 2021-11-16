@@ -1,4 +1,5 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
@@ -10,7 +11,7 @@ import { Tab2Page } from '../tab2/tab2.page'
   selector: 'app-viewer',
   templateUrl: './viewer.page.html',
   styleUrls: ['./viewer.page.scss'],
-})
+}) 
 export class ViewerPage {
   path: any
   x: any

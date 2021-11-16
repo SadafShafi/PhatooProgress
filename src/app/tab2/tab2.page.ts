@@ -82,7 +82,7 @@ export class Tab2Page {
     const capturedPhoto = await Camera.getPhoto({
       resultType: CameraResultType.Uri, // file-based data; provides best performance
       source: CameraSource.Camera, // automatically take a new photo with the camera
-      quality: 100 // highest quality (0 to 100)
+      quality: 50 // highest quality (0 to 100)
     });
   
     // Save the picture and add it to photo collection
@@ -101,7 +101,7 @@ export class Tab2Page {
       })
     }
 
-    decodeImage(imm) {
+    async decodeImage(imm) {
       this.Spinner = true;
       console.log("decoding")
       var headers = {
@@ -111,16 +111,21 @@ export class Tab2Page {
       const imageData = new FormData();
       
       const targetImage = imm;
+      // alert(targetImage.webviewPath)
       imageData.append('base64Image', targetImage.webviewPath);
       // setTimeout(
-        this.http.post('https://api.ocr.space/parse/image', imageData, 
+        // this.imageData = imageData
+        await this.http.post('https://api.ocr.space/parse/image', imageData, 
       { headers: new HttpHeaders(headers) }
       ).subscribe((data: any) => {
         console.log("doing")
         console.log('my data: ', data);
         this.Spinner = false
+        // alert(data.ErrorMessage)
+        // this.showOnScreen = data            //#################################<<<<<<<<<<<<<<<<<<<<<
         if(data.IsErroredOnProcessing){
-          this.showOnScreen = "ERROR"
+          this.showOnScreen = data.ErrorMessage
+          alert(this.showOnScreen)
         }
         else{
           this.decodedResult = data.ParsedResults[0].ParsedText

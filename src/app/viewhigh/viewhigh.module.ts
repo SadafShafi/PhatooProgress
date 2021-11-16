@@ -9,7 +9,7 @@ import { ViewhighPageRoutingModule } from './viewhigh-routing.module';
 import { ViewhighPage } from './viewhigh.page';
 
 @NgModule({
-  imports: [
+  imports: [ 
     CommonModule,
     FormsModule,
     IonicModule,
